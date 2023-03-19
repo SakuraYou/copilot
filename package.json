@@ -1,0 +1,23 @@
+{
+  "name": "dev-copilot",
+  "version": "0.0.0",
+  "description": "辅助前端开发工具",
+  "workspaces": [
+    "package/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "typescript": "^4.8.2"
+  },
+  "keywords": [
+    "cli",
+    "webpack"
+  ],
+  "author": "youzhijun",
+  "engines": {
+    "node": ">=14.6.0"
+  },
+  "license": "ISC"
+}

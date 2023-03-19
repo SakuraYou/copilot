@@ -1,0 +1,25 @@
+{
+  "name": "create-copilot-app",
+  "version": "0.0.1",
+  "description": "cli",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc --build tsconfig.json"
+  },
+  "bin": {
+
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@types/cross-spawn": "6.0.0",
+    "@types/node": "^12.6.8",
+    "commander": "2.20.0",
+    "cross-spawn": "6.0.5",
+    "chalk": "2.4.2"
+  },
+  "author": "",
+  "license": "ISC"
+}

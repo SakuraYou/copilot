@@ -1,0 +1,8 @@
+*.DS_Store
+.idea
+.vscode
+node_modules
+pnpm-debug.log
+.turbo
+.eslintcache
+.vscode/snippet.code-snippets
