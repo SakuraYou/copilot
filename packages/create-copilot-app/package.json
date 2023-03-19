@@ -1,14 +1,19 @@
 {
-  "name": "create-copilot-app",
+  "name": "@copilot/create-app",
   "version": "0.0.1",
   "description": "cli",
-  "main": "index.js",
+  "main": "./lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/",
+    "directory": "packages/create-next-app"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc --build tsconfig.json"
+    "build": "rm -rf ./lib && tsc --build tsconfig.json"
   },
   "bin": {
-
+    "create-copilot-app": "./lib/index.js"
   },
   "files": [
     "dist"
@@ -20,6 +25,6 @@
     "cross-spawn": "6.0.5",
     "chalk": "2.4.2"
   },
-  "author": "",
+  "author": "Sakura",
   "license": "ISC"
 }
