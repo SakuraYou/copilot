@@ -1,12 +1,12 @@
 {
-  "name": "@copilot/create-app",
+  "name": "@dev-copilot/create-app",
   "version": "0.0.1",
   "description": "cli",
   "main": "./lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/",
-    "directory": "packages/create-next-app"
+    "url": "https://github.com/SakuraYou/copilot",
+    "directory": "packages/create-copilot-app"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -16,7 +16,7 @@
     "create-copilot-app": "./lib/index.js"
   },
   "files": [
-    "dist"
+    "lib"
   ],
   "devDependencies": {
     "@types/cross-spawn": "6.0.0",
