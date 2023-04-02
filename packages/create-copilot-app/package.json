@@ -1,6 +1,6 @@
 {
   "name": "@dev-copilot/create-app",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "cli",
   "main": "./lib/index.js",
   "repository": {
