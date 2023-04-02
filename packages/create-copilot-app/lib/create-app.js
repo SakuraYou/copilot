@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -40,55 +39,46 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 exports.__esModule = true;
+exports.createApp = void 0;
+var coerce_1 = __importDefault(require("semver/functions/coerce"));
+var lt_1 = __importDefault(require("semver/functions/lt"));
 var chalk_1 = __importDefault(require("chalk"));
-var commander_1 = require("commander");
-var semver_1 = __importDefault(require("semver"));
+var path_1 = __importDefault(require("path"));
+var fs_extra_1 = __importDefault(require("fs-extra"));
+var os_1 = __importDefault(require("os"));
 var utils_1 = require("./utils");
-var check_1 = require("./check");
-var create_app_1 = require("./create-app");
-var packageJson = utils_1.getPackageJson();
-function init() {
-    return __awaiter(this, void 0, void 0, function () {
-        var program, projectName, options, latest, error_1;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    program = new commander_1.Command();
-                    projectName = 'my-app';
-                    program
-                        .name('create-copilot-app')
-                        .description('CLI to create a copilot app')
-                        .version(utils_1.getPackageJson().version);
-                    program.usage(chalk_1["default"].green('<project-directory>') + " [options]");
-                    program.command('create-copilot-app <project>')
-                        .description('Create a react project')
-                        .action(function (name) {
-                        projectName = name;
-                    });
-                    program.option('--template <template type>', 'specify a template for the created project');
-                    program.parse(process.argv);
-                    options = program.opts();
-                    _a.label = 1;
-                case 1:
-                    _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, check_1.checkForLatestVersion()];
-                case 2:
-                    latest = _a.sent();
-                    if (latest && semver_1["default"].lt(packageJson.version, latest)) {
-                        console.log();
-                        console.log(chalk_1["default"].yellow("You are running `create-copilot-app` " + packageJson.version + ", which is behind the latest release (" + latest + ").\n\n"));
-                    }
-                    else {
-                        create_app_1.createApp(projectName, options.template);
-                    }
-                    return [3 /*break*/, 4];
-                case 3:
-                    error_1 = _a.sent();
-                    console.log('error =====', error_1);
-                    return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
-            }
-        });
+function createApp(name, template) {
+    var unsupportedNodeVersion = !lt_1["default"]('14.0.0', coerce_1["default"](process.version));
+    if (unsupportedNodeVersion) {
+        console.log(chalk_1["default"].yellow("You are using Node " + process.version + " so the project will be bootstrapped with an old unsupported version of tools.\n\n" +
+            "Please update to Node 14 or higher for a better, fully supported experience.\n"));
+    }
+    var root = path_1["default"].resolve(name);
+    var appName = path_1["default"].basename(root);
+    fs_extra_1["default"].ensureDirSync(name);
+    utils_1.isSafeToCreateProjectIn(root, name);
+    console.log();
+    console.log("Creating a new React app in " + chalk_1["default"].green(root) + ".");
+    console.log();
+    var packageJson = {
+        name: appName,
+        version: '1.0.0',
+        private: true
+    };
+    fs_extra_1["default"].writeFileSync(path_1["default"].join(root, 'package.json'), JSON.stringify(packageJson, null, 2) + os_1["default"].EOL);
+    var originalDirectory = process.cwd();
+    process.chdir(root);
+    run({
+        root: root,
+        name: appName,
+        template: template,
+        originalDirectory: originalDirectory
     });
 }
-init();
+exports.createApp = createApp;
+function run(_a) {
+    var root = _a.root, name = _a.name, template = _a.template, originalDirectory = _a.originalDirectory;
+    return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_b) {
+        return [2 /*return*/];
+    }); });
+}

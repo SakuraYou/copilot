@@ -1,0 +1,27 @@
+{
+  "name": "dev-copilot-template-typescript",
+  "version": "0.1.0",
+  "keywords": [
+    "react",
+    "create-copilot-app",
+    "template",
+    "typescript"
+  ],
+  "description": "The base TypeScript template for Create React App.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SakuraYou/copilot.git",
+    "directory": "packages/template/react-ts"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=14"
+  },
+  "bugs": {
+    "url": "https://github.com/SakuraYou/copilot/issues"
+  },
+  "files": [
+    "src",
+    "public"
+  ]
+}

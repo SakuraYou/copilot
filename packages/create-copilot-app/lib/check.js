@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -40,55 +39,30 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 exports.__esModule = true;
-var chalk_1 = __importDefault(require("chalk"));
-var commander_1 = require("commander");
-var semver_1 = __importDefault(require("semver"));
-var utils_1 = require("./utils");
-var check_1 = require("./check");
-var create_app_1 = require("./create-app");
-var packageJson = utils_1.getPackageJson();
-function init() {
+exports.checkForLatestVersion = void 0;
+var https_1 = __importDefault(require("https"));
+function checkForLatestVersion() {
     return __awaiter(this, void 0, void 0, function () {
-        var program, projectName, options, latest, error_1;
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    program = new commander_1.Command();
-                    projectName = 'my-app';
-                    program
-                        .name('create-copilot-app')
-                        .description('CLI to create a copilot app')
-                        .version(utils_1.getPackageJson().version);
-                    program.usage(chalk_1["default"].green('<project-directory>') + " [options]");
-                    program.command('create-copilot-app <project>')
-                        .description('Create a react project')
-                        .action(function (name) {
-                        projectName = name;
+            return [2 /*return*/, new Promise(function (resolve, reject) {
+                    https_1["default"].get('https://registry.npmjs.org/-/package/@dev-copilot/create-app/dist-tags', function (res) {
+                        var body = '';
+                        if (res.statusCode === 200) {
+                            res.on('data', function (data) {
+                                body += data;
+                            });
+                            res.on('end', function () {
+                                resolve(JSON.parse(body).latest);
+                            });
+                        }
+                        else {
+                            reject();
+                        }
+                    }).on('error', function () {
+                        reject();
                     });
-                    program.option('--template <template type>', 'specify a template for the created project');
-                    program.parse(process.argv);
-                    options = program.opts();
-                    _a.label = 1;
-                case 1:
-                    _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, check_1.checkForLatestVersion()];
-                case 2:
-                    latest = _a.sent();
-                    if (latest && semver_1["default"].lt(packageJson.version, latest)) {
-                        console.log();
-                        console.log(chalk_1["default"].yellow("You are running `create-copilot-app` " + packageJson.version + ", which is behind the latest release (" + latest + ").\n\n"));
-                    }
-                    else {
-                        create_app_1.createApp(projectName, options.template);
-                    }
-                    return [3 /*break*/, 4];
-                case 3:
-                    error_1 = _a.sent();
-                    console.log('error =====', error_1);
-                    return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
-            }
+                })];
         });
     });
 }
-init();
+exports.checkForLatestVersion = checkForLatestVersion;

@@ -20,11 +20,15 @@
   ],
   "devDependencies": {
     "@types/cross-spawn": "6.0.0",
-    "@types/node": "^12.6.8",
+    "@types/node": "^12.20.55",
+    "chalk": "2.4.2",
     "commander": "2.20.0",
-    "cross-spawn": "6.0.5",
-    "chalk": "2.4.2"
+    "cross-spawn": "6.0.5"
   },
   "author": "Sakura",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^11.1.1",
+    "semver": "^7.3.8"
+  }
 }

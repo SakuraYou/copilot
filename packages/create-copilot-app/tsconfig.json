@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
     "outDir": "lib",
-    "target": "es2019",
     "moduleResolution": "node",
-    "strict": true,
+    "strict": false,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "skipLibCheck": false
+    "skipLibCheck": false,
   },
   "include": ["src/**/*"]
 }
