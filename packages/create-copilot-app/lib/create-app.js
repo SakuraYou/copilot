@@ -47,6 +47,11 @@ var path_1 = __importDefault(require("path"));
 var fs_extra_1 = __importDefault(require("fs-extra"));
 var os_1 = __importDefault(require("os"));
 var utils_1 = require("./utils");
+/**
+ * 创建项目
+ * @param name 项目名称
+ * @param template 模版
+ */
 function createApp(name, template) {
     var unsupportedNodeVersion = !(0, lt_1["default"])('14.0.0', (0, coerce_1["default"])(process.version));
     if (unsupportedNodeVersion) {
