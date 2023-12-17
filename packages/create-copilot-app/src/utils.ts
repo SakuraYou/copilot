@@ -2,10 +2,17 @@ import path from 'path';
 import chalk from 'chalk';
 import fs from 'fs-extra';
 
+/**
+ * 获取 package.json 文件
+ * @returns package.json 文件
+ */
 export function getPackageJson(): Record<string, any> {
   return require(path.resolve(__dirname, '../package.json'));
 }
 
+/**
+ * 安全性检查
+ */
 export function isSafeToCreateProjectIn(root, name) {
   const validFiles = [
     '.DS_Store',

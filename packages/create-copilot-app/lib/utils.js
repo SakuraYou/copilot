@@ -7,10 +7,17 @@ exports.isSafeToCreateProjectIn = exports.getPackageJson = void 0;
 var path_1 = __importDefault(require("path"));
 var chalk_1 = __importDefault(require("chalk"));
 var fs_extra_1 = __importDefault(require("fs-extra"));
+/**
+ * 获取 package.json 文件
+ * @returns package.json 文件
+ */
 function getPackageJson() {
     return require(path_1["default"].resolve(__dirname, '../package.json'));
 }
 exports.getPackageJson = getPackageJson;
+/**
+ * 安全性检查
+ */
 function isSafeToCreateProjectIn(root, name) {
     var validFiles = [
         '.DS_Store',
@@ -42,21 +49,21 @@ function isSafeToCreateProjectIn(root, name) {
     // check files 
     var conflicts = fs_extra_1["default"].readdirSync(root).filter(function (file) { return !validFiles.includes(file); }).filter(function (file) { return !isErrorLog(file); });
     if (conflicts.length > 0) {
-        console.log("The directory " + chalk_1["default"].green(name) + " contains files that could conflict:");
+        console.log("The directory ".concat(chalk_1["default"].green(name), " contains files that could conflict:"));
         console.log();
         for (var _i = 0, conflicts_1 = conflicts; _i < conflicts_1.length; _i++) {
             var file = conflicts_1[_i];
             try {
                 var stats = fs_extra_1["default"].lstatSync(fs_extra_1["default"].json(root, file));
                 if (stats.isDirectory()) {
-                    console.log(" " + chalk_1["default"].blue(file + "/"));
+                    console.log(" ".concat(chalk_1["default"].blue("".concat(file, "/"))));
                 }
                 else {
-                    console.log("  " + file);
+                    console.log("  ".concat(file));
                 }
             }
             catch (error) {
-                console.log("  " + file);
+                console.log("  ".concat(file));
             }
         }
         console.log();

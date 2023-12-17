@@ -1,5 +1,9 @@
 import https from 'https';
 
+/**
+ * 检查 cli @dev-copilot/create-app 最新版本
+ * @returns 版本号
+ */
 export async function checkForLatestVersion(): Promise<string> {
   return new Promise((resolve, reject) => {
     https.get('https://registry.npmjs.org/-/package/@dev-copilot/create-app/dist-tags', (res) => {

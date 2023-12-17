@@ -15,7 +15,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -46,7 +46,7 @@ var semver_1 = __importDefault(require("semver"));
 var utils_1 = require("./utils");
 var check_1 = require("./check");
 var create_app_1 = require("./create-app");
-var packageJson = utils_1.getPackageJson();
+var packageJson = (0, utils_1.getPackageJson)();
 function init() {
     return __awaiter(this, void 0, void 0, function () {
         var program, projectName, options, latest, error_1;
@@ -58,8 +58,8 @@ function init() {
                     program
                         .name('create-copilot-app')
                         .description('CLI to create a copilot app')
-                        .version(utils_1.getPackageJson().version);
-                    program.usage(chalk_1["default"].green('<project-directory>') + " [options]");
+                        .version((0, utils_1.getPackageJson)().version);
+                    program.usage("".concat(chalk_1["default"].green('<project-directory>'), " [options]"));
                     program.command('create-copilot-app <project>')
                         .description('Create a react project')
                         .action(function (name) {
@@ -71,15 +71,15 @@ function init() {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, check_1.checkForLatestVersion()];
+                    return [4 /*yield*/, (0, check_1.checkForLatestVersion)()];
                 case 2:
                     latest = _a.sent();
                     if (latest && semver_1["default"].lt(packageJson.version, latest)) {
                         console.log();
-                        console.log(chalk_1["default"].yellow("You are running `create-copilot-app` " + packageJson.version + ", which is behind the latest release (" + latest + ").\n\n"));
+                        console.log(chalk_1["default"].yellow("You are running `create-copilot-app` ".concat(packageJson.version, ", which is behind the latest release (").concat(latest, ").\n\n")));
                     }
                     else {
-                        create_app_1.createApp(projectName, options.template);
+                        (0, create_app_1.createApp)(projectName, options.template);
                     }
                     return [3 /*break*/, 4];
                 case 3:

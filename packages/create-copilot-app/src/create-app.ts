@@ -6,6 +6,11 @@ import fs from 'fs-extra'
 import os from 'os'
 import { isSafeToCreateProjectIn } from './utils'
 
+/**
+ * 创建项目
+ * @param name 项目名称
+ * @param template 模版
+ */
 export function createApp(name: string, template: string) {
   const unsupportedNodeVersion = !semverLt('14.0.0',
     semverCoerce(process.version)

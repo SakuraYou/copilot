@@ -14,7 +14,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -48,17 +48,17 @@ var fs_extra_1 = __importDefault(require("fs-extra"));
 var os_1 = __importDefault(require("os"));
 var utils_1 = require("./utils");
 function createApp(name, template) {
-    var unsupportedNodeVersion = !lt_1["default"]('14.0.0', coerce_1["default"](process.version));
+    var unsupportedNodeVersion = !(0, lt_1["default"])('14.0.0', (0, coerce_1["default"])(process.version));
     if (unsupportedNodeVersion) {
-        console.log(chalk_1["default"].yellow("You are using Node " + process.version + " so the project will be bootstrapped with an old unsupported version of tools.\n\n" +
+        console.log(chalk_1["default"].yellow("You are using Node ".concat(process.version, " so the project will be bootstrapped with an old unsupported version of tools.\n\n") +
             "Please update to Node 14 or higher for a better, fully supported experience.\n"));
     }
     var root = path_1["default"].resolve(name);
     var appName = path_1["default"].basename(root);
     fs_extra_1["default"].ensureDirSync(name);
-    utils_1.isSafeToCreateProjectIn(root, name);
+    (0, utils_1.isSafeToCreateProjectIn)(root, name);
     console.log();
-    console.log("Creating a new React app in " + chalk_1["default"].green(root) + ".");
+    console.log("Creating a new React app in ".concat(chalk_1["default"].green(root), "."));
     console.log();
     var packageJson = {
         name: appName,
@@ -78,7 +78,9 @@ function createApp(name, template) {
 exports.createApp = createApp;
 function run(_a) {
     var root = _a.root, name = _a.name, template = _a.template, originalDirectory = _a.originalDirectory;
-    return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_b) {
-        return [2 /*return*/];
-    }); });
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_b) {
+            return [2 /*return*/];
+        });
+    });
 }

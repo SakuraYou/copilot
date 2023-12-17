@@ -1,6 +1,6 @@
 {
   "name": "@dev-copilot/create-app",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "description": "cli",
   "main": "./lib/index.js",
   "repository": {
@@ -19,16 +19,16 @@
     "lib"
   ],
   "devDependencies": {
-    "@types/cross-spawn": "6.0.0",
-    "@types/node": "^12.20.55",
-    "chalk": "2.4.2",
-    "commander": "2.20.0",
-    "cross-spawn": "6.0.5"
+    "@types/cross-spawn": "^6.0.0",
+    "@types/node": "^12.20.55"
   },
   "author": "Sakura",
   "license": "ISC",
   "dependencies": {
     "fs-extra": "^11.1.1",
-    "semver": "^7.3.8"
+    "semver": "^7.3.8",
+    "chalk": "^4.1.2",
+    "cross-spawn": "^6.0.5",
+    "commander": "^2.20.0"
   }
 }
